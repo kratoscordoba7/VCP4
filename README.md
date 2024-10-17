@@ -22,7 +22,7 @@ Se han completado todas las tareas solicitadas de la **Práctica 4** para la asi
 Para comenzar con el proyecto, sigue estos pasos:
 
 > [!NOTE]  
-> Debes de situarte en un environment configurado como se definió en el cuaderno de la práctica de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P1/README.md#111-comandos-basicos-de-anaconda).
+> Debes de situarte en un environment configurado como se definió en el cuaderno de la práctica 1  de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P1/README.md#111-comandos-basicos-de-anaconda) y el de la práctica 4 de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P4/README.md).
 
 ### Paso 1: Abrir VSCode y situarse en el directorio:
    
