@@ -77,7 +77,7 @@ Participar en
 
 A continuación, presentamos los resultados obtenidos:
 
-<div style="text-align: center;" align="center"> <img src="img/coche_dectectado.png" width="400px" alt="Vehículo detectado con YOLO"> </div>
+<div style="text-align: center;" align="center"> <img src="img/coche_dectectado.png" width="500px" alt="Vehículo detectado con YOLO"> </div>
 
 Primer caso: Utilizamos YOLO para detectar el vehículo, indicando el nivel de confianza con el que se ha logrado la identificación.
 
@@ -93,7 +93,7 @@ En esta imagen, correspondiente al segundo caso, se muestra en consola la matrí
 
 Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correctamente la matrícula, mostrándola en pantalla.
 
-<div style="text-align: center;" align="center"> <img src="img/person_anonymous.png" width="400px" alt="Detección de vehículos y personas con anonimato"> </div>
+<div style="text-align: center;" align="center"> <img src="img/person_anonymous.png" width="500px" alt="Detección de vehículos y personas con anonimato"> </div>
 
 Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
 
