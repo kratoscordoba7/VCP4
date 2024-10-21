@@ -11,9 +11,13 @@ Se han completado todas las tareas solicitadas de la **Práctica 4** para la asi
 
 ## 🛠️ Librerías Utilizadas
 
-[![NumPy](https://img.shields.io/badge/NumPy-%23013243?style=for-the-badge&logo=numpy)](Link_To_Your_NumPy_Page)
-[![OpenCV](https://img.shields.io/badge/OpenCV-%23FD8C00?style=for-the-badge&logo=opencv)](Link_To_Your_OpenCV_Page)
-[![Matplotlib](https://img.shields.io/badge/Matplotlib-%43FF6400?style=for-the-badge&logo=matplotlib&logoColor=white)](Link_To_Your_Matplotlib_Page)
+[![OpenCV](https://img.shields.io/badge/OpenCV-%23FF8C00.svg?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
+[![Pytesseract](https://img.shields.io/badge/Pytesseract-%2300A3E0.svg?style=for-the-badge&logo=pytorch&logoColor=white)](https://github.com/madmaze/pytesseract)
+[![YOLO](https://img.shields.io/badge/YOLO-%231f77b4.svg?style=for-the-badge&logo=python&logoColor=white)](https://github.com/ultralytics/yolov5)
+[![EasyOCR](https://img.shields.io/badge/EasyOCR-%23009639.svg?style=for-the-badge&logo=python&logoColor=white)](https://github.com/JaidedAI/EasyOCR)
+[![Math](https://img.shields.io/badge/Math-%23013243.svg?style=for-the-badge&logo=python&logoColor=white)](https://docs.python.org/3/library/math.html)
+[![Regex](https://img.shields.io/badge/Regex-%234C4CFF.svg?style=for-the-badge&logo=python&logoColor=white)](https://docs.python.org/3/library/re.html)
+
 
 
 ---
@@ -68,7 +72,31 @@ Se considerarán extras:
 Participar en 
  - Evaluar dos alternativas para la detección de matrículas: basada en YOLO, y basada en contornos.
  - Anonimizar a las personas y vehículos presentes en un vídeo.
- - En el caso de haberse apuntado al Autumn Campus Makeathon InnovAction Canarias, se valorará la aplicación de habilidades adquiridas en esta práctica.
+
+
+
+A continuación, presentamos los resultados obtenidos:
+
+<div style="text-align: center;"> <img src="img/coche_dectectado.png" alt="Vehículo detectado con YOLO"> </div>
+
+Primer caso: Utilizamos YOLO para detectar el vehículo, indicando el nivel de confianza con el que se ha logrado la identificación.
+
+<div style="text-align: center;"> <img src="img/yolo_matricula.png" alt="YOLO detectando matrícula"> </div>
+
+Segundo caso: El sistema detecta las matrículas de los vehículos y nos proporciona la confianza asociada a cada detección.
+
+<div style="text-align: center;"> <img src="img/consola_matricula_detectada.png" alt="Consola mostrando matrícula detectada"> </div>
+
+En esta imagen, correspondiente al segundo caso, se muestra en consola la matrícula detectada por el sistema.
+
+<div style="text-align: center;"> <img src="img/matricula_coche.png" alt="Matrícula reconocida"> </div>
+
+Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correctamente la matrícula, mostrándola en pantalla.
+
+<div style="text-align: center;"> <img src="img/person_anonymous.png" alt="Detección de vehículos y personas con anonimato"> </div>
+
+Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
+
 
 
 > [!IMPORTANT]  
