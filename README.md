@@ -97,6 +97,9 @@ Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correct
 
 Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
 
+<div style="text-align: center;"> <img src="img/roboflow.gif" alt="Vehículo detectado con RoboFlow"> </div>
+
+En este caso como podemos ver, nuestra primera impresion usando roboflow, usando 100 imagenes.
 
 
 > [!IMPORTANT]  
