@@ -26,7 +26,7 @@ Se han completado todas las tareas solicitadas de la **Práctica 4** para la asi
 Para comenzar con el proyecto, sigue estos pasos:
 
 > [!NOTE]  
-> Debes de situarte en un environment configurado como se definió en el cuaderno de la práctica 1  de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P1/README.md#111-comandos-basicos-de-anaconda) y el de la práctica 4 de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P4/README.md).
+> Debes de situarte en un envioronment configurado como se definió en el cuaderno de la práctica 1  de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P1/README.md#111-comandos-basicos-de-anaconda) y el de la práctica 4 de [otsedom](https://github.com/otsedom/otsedom.github.io/blob/main/VC/P4/README.md).
 
 ### Paso 1: Abrir VSCode y situarse en el directorio:
    
@@ -51,7 +51,7 @@ Tras estos pasos debería poder ejecutar el proyecto localmente
 
 ### Tarea 1 Reconocimiento de matrículas
 
-Para la entrega de esta práctica, la tarea consiste en desarrollar un prototipo que procese uno (vídeo ejemplo proporcionado) o varios vídeos (incluyendo vídeos de cosecha propia)):
+Para la entrega de esta práctica, la tarea consiste en desarrollar un prototipo que procese uno (vídeo ejemplo proporcionado) o varios vídeos (incluyendo vídeos de cosecha propia):
 
 detecte y siga las personas y vehículos presentes
 detecte y lea las matrículas de los vehículos presentes
@@ -82,7 +82,7 @@ A continuación se van a explicar la diferentes gráficas de la fotografía:
   - **mAP** (línea en púrpura oscuro): mide la precisión media en varios umbrales de IoU (desde 0.5 hasta 0.95).
   - **mAP@50:95** (línea en púrpura claro): evalúa el rendimiento a un umbral específico de IoU (0.50), lo que suele ser más permisivo.
 
-En el ambito del mAP, se puede concluir que a lo largo de las épocas, se observa una tendencia general de mejora en ambas métricas. El mAP se estabiliza cerca de 0.9, lo que indica un buen rendimiento del modelo.
+En el ámbito del mAP, se puede concluir que a lo largo de las épocas, se observa una tendencia general de mejora en ambas métricas. El mAP se estabiliza cerca de 0.9, lo que indica un buen rendimiento del modelo.
 El mAP@50:95 es más bajo pero sigue una tendencia ascendente, estabilizándose en alrededor de 0.6, lo que muestra que el modelo sigue mejorando, aunque con menor precisión a mayores umbrales.
 
 Por otro lado,  la pérdida asociada a la predicción de las cajas delimitadoras (bounding boxes), que representan los objetos en una imagen. La pérdida se refiere a la diferencia entre las predicciones del modelo y las cajas reales (ground truth).
@@ -100,18 +100,23 @@ En el gráfico de la derecha, se muestra la pérdida de objetos, que está relac
 Este modelo, en cuanto a métricas se refiere, presentó un rendimiento atractivo. Existen dos problemas por parte de Roboflow por lo cual terminamos descartando dicha opción:
 - La primera de ellas es que roboflow exige el usao de la API para poder usar el modelo, el modus operandi es el siguiente:
    - Primero pides a la API de roboflow mediante una API key que te dé el modelo (no lo tienes en local, lo tienes mediante una conexión a la API).
-   - Para obtener las predicción de una imagen se tiene que requerir a la API para que cada frame por individual lo procese.
+   - Para obtener la predicción de una imagen se tiene que requerir a la API para que cada frame por individual lo procese.
       - El gran problema de  esto es que un vídeo cualquiera de no mucha duración se hace eterno para que termine.
-- El segundo problema es que el resultado que se obtuvo por parte de este modelo no fue bueno, de hecho se podría decir que fue bastante malo.
+- El segundo problema es que el resultado que se obtuvo por parte de este modelo no fue bueno, de hecho, se podría decir que fue bastante malo.
 
-En vista a lo sucedido, decimos cambiar de estrategia y como nos comentaron los docentes de la materia decidimos seguir el siguiente algoritmo:
+Aquí se presenta un ejemplo de su comportamiento:
+<div style="text-align: center;"> <img src="img/roboflow.gif" alt="Vehículo detectado con RoboFlow"> </div>
+
+Se puede apreciar que no distingue correctamente los dos coches, los trata como una sola unidad. Además, a pesar de que se ve que detecta la matrícula en este ejemplo en otros muchos no lo hacía
+
+En vista a lo sucedido, decidimos cambiar de estrategia y, como nos comentaron los docentes de la materia, decidimos seguir el siguiente algoritmo:
 - Usar un clasificador de personas y coches. Cuando este esté clasificando algo se lo pasamos a un clasificador únicamente de matrículas que también decidimos entrenar mediante roboflow y estos fueron las métricas obtenidas
 
 <div style="text-align: center;" align="center"> <img src="img/metrica_2_overflwo.png" height="400px" width="500px" alt="Vehículo detectado con YOLO"> </div>
 
 Los resultados de este segundo modelo fueron similares a los del primero, a pesar de que este se enfocaba únicamente en la clasificación de matrículas. Aunque las métricas iniciales indicaban un modelo prometedor, los resultados finales fueron decepcionantes: el modelo tuvo dificultades para manejar tanto imágenes con ruido (por ejemplo, imágenes con interferencias o baja calidad) como sin él. Consideramos que el problema no se debía al dataset, ya que contábamos con más de 290 imágenes, muchas de ellas modificadas para evitar el sobreajuste. De igual manera, al tener que llamar a la API de roboflow por cada frame el vídeo se ralentzió demasiado. 
 
-En esta situacion, se optó por entrenar un modelo con el mismo dataset que se usó con roboflow pero en local clonando el git de ultralytics para YOLO v8 y los resultados que se obtuvieron son:
+En esta situación, se optó por entrenar un modelo con el mismo dataset que se usó con roboflow pero en local clonando el git de ultralytics para YOLO v8 y los resultados que se obtuvieron son:
 
 <div class="image-grid">
 </div>
@@ -163,11 +168,6 @@ Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correct
 <div style="text-align: center;" align="center"> <img src="img/person_anonymous.png"  height="350px" width="500px" alt="Detección de vehículos y personas con anonimato"> </div>
 
 Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
-
-<div style="text-align: center;"> <img src="img/roboflow.gif" alt="Vehículo detectado con RoboFlow"> </div>
-
-En este caso como podemos ver, nuestra primera impresion usando roboflow, usando 100 imagenes.
-
 
 > [!IMPORTANT]  
 > Los archivos presentados aquí son una modificación de los archivos originales de [otsedom](https://github.com/otsedom/otsedom.github.io/tree/main/VC).
