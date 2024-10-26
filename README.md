@@ -107,6 +107,10 @@ Este modelo, en cuanto a métricas se refiere, presentó un rendimiento atractiv
 Aquí se presenta un ejemplo de su comportamiento:
 <div style="text-align: center;"> <img src="img/roboflow.gif" alt="Vehículo detectado con RoboFlow"> </div>
 
+## Video de demostración
+
+
+
 Se puede apreciar que no distingue correctamente los dos coches, los trata como una sola unidad. Además, a pesar de que se ve que detecta la matrícula en este ejemplo en otros muchos no lo hacía
 
 En vista a lo sucedido, decidimos cambiar de estrategia y, como nos comentaron los docentes de la materia, decidimos seguir el siguiente algoritmo:
@@ -168,6 +172,12 @@ Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correct
 <div style="text-align: center;" align="center"> <img src="img/person_anonymous.png"  height="350px" width="500px" alt="Detección de vehículos y personas con anonimato"> </div>
 
 Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
+
+Por último, se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesseract y con easyOCR. A priori pueden parecer idénticos pero ha de fijarse en el lector de la matrícula:
+<div style="text-align: center;"> <img src="output_video_pytesseract.gif" alt="Vehículo detectado con RoboFlow"> </div>
+<div style="text-align: center;"> <img src="output_video_easyOCR.gif" alt="Vehículo detectado con RoboFlow"> </div>
+
+
 
 > [!IMPORTANT]  
 > Los archivos presentados aquí son una modificación de los archivos originales de [otsedom](https://github.com/otsedom/otsedom.github.io/tree/main/VC).
