@@ -155,6 +155,22 @@ A continuación, presentamos los resultados obtenidos:
 
 <div style="text-align: center;" align="center"> <img src="img/coche_dectectado.png" height="400px" width="500px" alt="Vehículo detectado con YOLO"> </div>
 
+Para la anonimización de las personas se usó el siguiente código:
+
+```python
+# Anonimizamos las personas
+if class_name == "person":
+
+  # Aplicamos un desenfoque a la región de la persona
+  person_roi = img[y1:y2, x1:x2]
+  blurred_person = cv2.GaussianBlur(person_roi, (51, 51), 0)
+  img[y1:y2, x1:x2] = blurred_person
+
+  # Detectamos la dirección de la persona
+  direction = "left" if x2 < img.shape[1] // 2 else "right"
+  directions[direction] += 1
+```
+
 Primer caso: Utilizamos YOLO para detectar el vehículo, indicando el nivel de confianza con el que se ha logrado la identificación.
 
 <div style="text-align: center;" align="center"> <img src="img/yolo_matricula.png" width="400px" alt="YOLO detectando matrícula"> </div>
@@ -173,9 +189,31 @@ Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correct
 
 Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
 
-Por último, se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesseract y con easyOCR. A priori pueden parecer idénticos pero ha de fijarse en el lector de la matrícula:
+Se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesseract y con easyOCR. A priori pueden parecer idénticos pero ha de fijarse en el lector de la matrícula:
 <div style="text-align: center;"> <img src="output_video_pytesseract.gif" alt="Vehículo detectado con RoboFlow"> </div>
 <div style="text-align: center;"> <img src="output_video_easyOCR.gif" alt="Vehículo detectado con RoboFlow"> </div>
+
+Para el almacenamiento en el archivo csv se aplica las siguientes instrucciones:
+```python
+# Inicializamos el archivo CSV
+csv_file = open("detected_objects_easyOCR.csv", mode='w', newline='')
+csv_writer = csv.writer(csv_file)
+csv_writer.writerow(['frame', 'object_type', 'confidence', 'tracking_id', 'x1', 'y1', 'x2', 'y2', 'license_plate', 'plate_confidence', 'direction'])
+...More code...
+# Escribimos los datos en el archivo CSV
+csv_writer.writerow([frame_count, class_name, confidence, tracking_id, x1, y1, x2, y2, plate_text, confidence, direction]
+```
+Por último, para el almacenaje del vídeo el código implicado es:
+```python
+# Inicializamos el objeto para grabar el video con los resultados
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+out = cv2.VideoWriter('output_video_easyOCR.mp4', fourcc, 20.0, (int(cap.get(3)), int(cap.get(4))))
+```
+En la función cv2.VideoWriter() los parámetros son:
+- El nombre del archivo
+- fourcc, es un código de cuatros caracteres que se usa para comprimir los frames. Por ejemplo, VideoWriter::fourcc('M','J','P','G') es un "motion-jpeg" codificador.
+- FPS (fotograma por segundo)
+- El tamaño de los frame del vídeo
 
 
 
@@ -194,6 +232,8 @@ Por último, se añaden dos vídeos del funcionamiento de nuestra propuesta fina
 4. [Tesseract OCR fails to correctly recognize text in vehicle license plates](https://stackoverflow.com/questions/78899657/tesseract-ocr-fails-to-correctly-recognize-text-in-vehicle-license-plates)
 5. [OpenCV Thresholding](https://docs.opencv.org/3.4/d7/d4d/tutorial_py_thresholding.html)
 6. [Reconocimiento de matrículas vehiculares con OpenCV y Pytesseract OCR en Python](https://omes-va.com/reconocimiento-de-matriculas-vehiculares-opencv-pytesseract-ocr-python/)
+7. [Documentación ofical de OpenCV para la generación del vídeo](https://docs.opencv.org/4.x/dd/d9e/classcv_1_1VideoWriter.html#ad59c61d8881ba2b2da22cff5487465b5)
+8. [Documentación oficial de python para escritura de ficheros .csv](https://docs.python.org/3/library/csv.html)
 
 ---
 
