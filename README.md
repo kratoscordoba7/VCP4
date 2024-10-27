@@ -230,6 +230,17 @@ En la función cv2.VideoWriter() los parámetros son:
 - FPS (fotograma por segundo)
 - El tamaño de los frame del vídeo
 
+Para obtener mejores conclusiones y analizar los resultados de forma más precisa, decidimos utilizar la biblioteca Chart.js, ampliamente popular en la creación de gráficos interactivos.
+
+<div align="center"><img src="https://github.com/user-attachments/assets/93b6fea5-f70e-401f-9a89-0dbf8b3fa893"></div>
+
+Como podemos observar, el modelo muestra mayor confianza en la detección de vehículos que en la de personas. Esto puede deberse a varios factores, como la iluminación, los faros de los coches o la rapidez de movimiento de las personas.
+
+En cuanto al conteo, el sistema ha detectado más personas que coches, aunque estas cifras no necesariamente coinciden con el número real de personas o vehículos que pasan por el video. En realidad, representan la cantidad de veces que el sistema ha identificado estos objetos, lo cual indica una mayor estabilidad en la detección de los coches.
+
+<div align="center"><img src="https://github.com/user-attachments/assets/aee4fe12-76f1-4fe8-b869-8a88eb024e28"></div>
+
+En este caso, podemos ver la diferencia entre EasyOCR y PyTesseract y la eficiencia de EasyOCR para el reconocimiento de matrículas.
 
 
 > [!IMPORTANT]  
