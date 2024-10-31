@@ -196,13 +196,13 @@ Se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesse
    <td width="50%">
    <h3 align="center">Video Pytesseract</h3>
    <div align="center">
-   <img src="output_video_pytesseract.gif" alt="Vehículo detectado con RoboFlow">
+   <img src="img/output_video_pytesseract.gif" alt="Vehículo detectado con RoboFlow">
    </div>                                                                       
    </td>
    <td width="50%">
    <h3 align="center">Video EasyOCR</h3>
    <div align="center">
-   <img src="output_video_easyOCR.gif" alt="Vehículo detectado con RoboFlow">
+   <img src="img/output_video_easyOCR.gif" alt="Vehículo detectado con RoboFlow">
    </div>                                                                       
    </td>
 </table>
@@ -211,7 +211,7 @@ Se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesse
 Para el almacenamiento en el archivo csv se aplica las siguientes instrucciones:
 ```python
 # Inicializamos el archivo CSV
-csv_file = open("detected_objects_easyOCR.csv", mode='w', newline='')
+csv_file = open("media/detected_objects_easyOCR.csv", mode='w', newline='')
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['frame', 'object_type', 'confidence', 'tracking_id', 'x1', 'y1', 'x2', 'y2', 'license_plate', 'plate_confidence', 'direction'])
 ...More code...
@@ -222,7 +222,7 @@ Por último, para el almacenaje del vídeo el código implicado es:
 ```python
 # Inicializamos el objeto para grabar el video con los resultados
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter('output_video_easyOCR.mp4', fourcc, 20.0, (int(cap.get(3)), int(cap.get(4))))
+out = cv2.VideoWriter('media/output_video_easyOCR.mp4', fourcc, 20.0, (int(cap.get(3)), int(cap.get(4))))
 ```
 En la función cv2.VideoWriter() los parámetros son:
 - El nombre del archivo
