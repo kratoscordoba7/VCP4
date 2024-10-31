@@ -190,7 +190,7 @@ Tercer caso: Aquí se ilustra cómo el sistema ha detectado y reconocido correct
 
 Cuarto caso: Además de detectar los vehículos, el sistema también identifica a las personas y aplica un filtro que oculta su identidad, respetando su privacidad.
 
-Se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesseract y con easyOCR. A priori pueden parecer idénticos pero ha de fijarse en el lector de la matrícula:
+Se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesseract y con easyOCR. A priori pueden parecer idénticos pero ha de fijarse en el lector de la matrícula y facilmente se llegará a la conclusión de que easyOCR es mejor que pytesseract:
 
 <table>
    <td width="50%">
@@ -207,6 +207,28 @@ Se añaden dos vídeos del funcionamiento de nuestra propuesta final con pytesse
    </td>
 </table>
 
+### Comparativa modelo preentrenado vs Modelo entrenado en local
+
+<table>
+   <td width="50%">
+   <h3 align="center">Detector de matrículas preentrenado, EasyOCR</h3>
+   <div align="center">
+   <img src="img/output_video_modesto_easyOCR.gif" alt="Vehículo detectado con RoboFlow">
+   </div>                                                                       
+   </td>
+   <td width="50%">
+   <h3 align="center">Detector de matrículas entrenado en local, EasyOCR</h3>
+   <div align="center">
+   <img src="img/output_video_modesto_easyOCR_cosecha.gif" alt="Vehículo detectado con RoboFlow">
+   </div>                                                                       
+   </td>
+</table>
+
+Los resultados obtenidos muestran un desempeño comparable entre los detectores en condiciones de prueba controladas; sin embargo, la experiencia de los estudiantes con ambos modelos permitió observar matices que no son inmediatamente evidentes en los datos mostrados. En situaciones con ruido elevado, baja calidad de imagen y condiciones de iluminación cambiantes, el modelo preentrenado se destacó por su mayor polivalencia y adaptabilidad, lo que sugiere una mayor robustez en entornos adversos.
+
+Esta capacidad de adaptación del modelo preentrenado puede deberse a la diversidad de datos con los que fue entrenado inicialmente, lo cual le permite responder con mayor precisión en contextos que difieren de los ideales. Además, los estudiantes notaron que este modelo se ajustaba más rápidamente a variaciones en la calidad de la imagen y los cambios en la luz, aspectos críticos para garantizar la confiabilidad del sistema en aplicaciones del mundo real. Por lo tanto, aunque ambos detectores ofrecen un rendimiento efectivo, el modelo preentrenado podría ser una mejor elección en escenarios que requieren versatilidad y resistencia frente a fluctuaciones en el entorno.
+
+### CSV
 
 Para el almacenamiento en el archivo csv se aplica las siguientes instrucciones:
 ```python
@@ -218,6 +240,8 @@ csv_writer.writerow(['frame', 'object_type', 'confidence', 'tracking_id', 'x1', 
 # Escribimos los datos en el archivo CSV
 csv_writer.writerow([frame_count, class_name, confidence, tracking_id, x1, y1, x2, y2, plate_text, confidence, direction]
 ```
+
+### Vídeo
 Por último, para el almacenaje del vídeo el código implicado es:
 ```python
 # Inicializamos el objeto para grabar el video con los resultados
@@ -230,6 +254,7 @@ En la función cv2.VideoWriter() los parámetros son:
 - FPS (fotograma por segundo)
 - El tamaño de los frame del vídeo
 
+### Comparativa gráfica
 Para obtener mejores conclusiones y analizar los resultados de forma más precisa, decidimos utilizar la biblioteca Chart.js, ampliamente popular en la creación de gráficos interactivos.
 
 <div align="center"><img src="https://github.com/user-attachments/assets/93b6fea5-f70e-401f-9a89-0dbf8b3fa893"></div>
