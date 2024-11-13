@@ -267,6 +267,10 @@ En cuanto al conteo, el sistema ha detectado más personas que coches, aunque es
 
 En este caso, podemos ver la diferencia entre EasyOCR y PyTesseract y la eficiencia de EasyOCR para el reconocimiento de matrículas.
 
+> [!IMPORTANT]  
+> En la carpeta `dataset` se encuentran los conjuntos de datos utilizados para el reconocimiento de matrículas.  
+> Puedes acceder al enlace del dataset en Kaggle aquí: <a href="https://www.kaggle.com/datasets/andrewmvd/car-plate-detection">Detección de matrículas de vehículos</a>.
+
 
 > [!IMPORTANT]  
 > Los archivos presentados aquí son una modificación de los archivos originales de [otsedom](https://github.com/otsedom/otsedom.github.io/tree/main/VC).
